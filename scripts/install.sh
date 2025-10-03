@@ -41,6 +41,8 @@ echo "Audio packages installation complete."
 echo "Configuring Bluetooth for auto-pairing..."
 systemctl enable bluetooth
 systemctl start bluetooth
+systemctl enable bluealsa
+systemctl start bluealsa
 
 # Make the device discoverable and pairable
 bluetoothctl << EOF
