@@ -23,9 +23,9 @@ This repository includes an installation script for setting up Wi-Fi and install
    ```bash
    chmod +x install.sh
    ```
-7. Run the script:
+7. Run the script as root:
    ```bash
-   ./install.sh
+   sudo ./install.sh
    ```
 8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, and will install Shairport Sync (AirPlay) and Bluetooth audio packages.
 9. Reboot your Raspberry Pi. It will automatically connect to the Wi-Fi network `CarPiAudio` and be ready to receive AirPlay and Bluetooth audio.
