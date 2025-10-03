@@ -27,7 +27,7 @@ EOF
 echo "Wi-Fi configuration written to $WPA_CONF with SSID 'CarPiAudio'."
 
 # Install Shairport Sync (AirPlay) and Bluetooth audio packages
-echo "Updating system and installing audio packages..."
+echo "=== Updating system and installing audio packages ==="
 if ! apt update && apt upgrade -y; then
   echo "System update/upgrade failed. Please check your network connection and package sources."
   exit 1
@@ -52,7 +52,7 @@ EOF
 echo "Shairport Sync configured with service name 'CarPiAudio'."
 
 # Configure Bluetooth for auto-pairing
-echo "Configuring Bluetooth for auto-pairing..."
+echo "=== Configuring Bluetooth for auto-pairing ==="
 systemctl enable bluetooth
 systemctl start bluetooth
 systemctl enable bluealsa
@@ -72,7 +72,7 @@ echo "Bluetooth configured for auto-pairing. Device name set to 'CarPiAudio' and
 echo "To pair your phone, go to Bluetooth settings and look for 'CarPiAudio'."
 
 # Enable HiFiBerry DAC+ Zero
-echo "Enabling HiFiBerry DAC+ Zero..."
+echo "=== Enabling HiFiBerry DAC+ Zero ==="
 CONFIG_TXT="$BOOT_MOUNT/config.txt"
 if ! grep -q '^dtoverlay=hifiberry-dac' "$CONFIG_TXT"; then
     echo 'dtoverlay=hifiberry-dac' >> "$CONFIG_TXT"
@@ -82,7 +82,7 @@ else
 fi
 
 # Configure ALSA to use HiFiBerry DAC+ Zero as default
-echo "Configuring ALSA for HiFiBerry DAC+ Zero..."
+echo "=== Configuring ALSA for HiFiBerry DAC+ Zero ==="
 cat <<EOF > /etc/asound.conf
 pcm.!default {
     type hw
@@ -96,7 +96,8 @@ EOF
 echo "ALSA configuration created at /etc/asound.conf."
 echo "HiFiBerry DAC+ Zero enabled."
 
+echo "=== Setup complete ==="
 echo "Installation complete! Rebooting in 5 seconds..."
-echo "After reboot, the device will be ready for AirPlay and Bluetooth audio."
+echo "After reboot, connect via Bluetooth or AirPlay to 'CarPiAudio'."
 sleep 5
 reboot
