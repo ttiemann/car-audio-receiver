@@ -69,14 +69,14 @@ agent on
 default-agent
 EOF
 
-# Enable PulseAudio Bluetooth module
-echo "Loading PulseAudio Bluetooth module..."
-if ! pactl list modules short | grep -q module-bluetooth-discover; then
-    pactl load-module module-bluetooth-discover
-fi
-
-echo "Bluetooth configured for auto-pairing. Device name set to 'CarPiAudio' and is now discoverable."
-echo "To pair your phone, go to Bluetooth settings and look for 'CarPiAudio'."
+# Install and enable Bluetooth audio systemd user service
+SERVICE_FILE="/home/$SUDO_USER/.config/systemd/user/enable-bluetooth-audio.service"
+mkdir -p "/home/$SUDO_USER/.config/systemd/user"
+cp "$(dirname "$0")/enable-bluetooth-audio.service" "$SERVICE_FILE"
+chown "$SUDO_USER:$SUDO_USER" "$SERVICE_FILE"
+echo "Enabling Bluetooth audio systemd user service for $SUDO_USER..."
+sudo -u "$SUDO_USER" systemctl --user enable enable-bluetooth-audio.service
+sudo -u "$SUDO_USER" systemctl --user start enable-bluetooth-audio.service
 
 # Enable HiFiBerry DAC+ Zero
 echo "=== Enabling HiFiBerry DAC+ Zero ==="

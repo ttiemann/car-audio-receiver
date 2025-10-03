@@ -1,0 +1,11 @@
+[Unit]
+Description=Enable Bluetooth audio via PulseAudio
+After=network.target bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/pi/Documents/GitHub/car-audio-receiver/scripts/enable-bluetooth-audio.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

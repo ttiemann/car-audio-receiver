@@ -32,14 +32,14 @@ This repository includes an installation script for setting up Wi-Fi, AirPlay (S
    ```bash
    sudo ./install.sh
    ```
-8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, install Shairport Sync (AirPlay) and Bluetooth audio packages (using PulseAudio for Bluetooth audio), configure Bluetooth auto-pairing with the device name "CarPiAudio", enable automatic service startup for Bluetooth and Shairport Sync, enable HiFiBerry DAC+ Zero with proper ALSA audio routing, and automatically reboot to apply all changes.
+8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, install Shairport Sync (AirPlay) and Bluetooth audio packages (using PulseAudio for Bluetooth audio), configure Bluetooth auto-pairing with the device name "CarPiAudio", enable automatic service startup for Bluetooth and Shairport Sync, enable HiFiBerry DAC+ Zero with proper ALSA audio routing, and automatically reboot to apply all changes. It also installs and enables a systemd user service to start Bluetooth audio automatically for the user at every login.
 9. After the automatic reboot, your Raspberry Pi will be ready to receive AirPlay and Bluetooth audio.
 10. The device will appear as "CarPiAudio" for both AirPlay and Bluetooth connections from your phone or other devices.
 11. Default SSH credentials for Raspberry Pi OS Lite:
     - **Username:** pi
     - **Password:** raspberry
 
-### Notes
+- Bluetooth audio is handled by PulseAudio and is started automatically at login via a systemd user service installed by the script.
 - SSH is not enabled by this script. To enable SSH, use the Raspberry Pi Imager tool and enable SSH in the advanced settings before writing the image to the SD card.
 - For more information, see the official Raspberry Pi documentation:
   https://www.raspberrypi.com/documentation/computers/remote-access.html#enabling-ssh
