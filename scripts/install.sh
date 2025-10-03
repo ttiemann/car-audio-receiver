@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Car Audio Receiver Setup Script
+
 # Ensure the script is run as root
 if [ "$EUID" -ne 0 ]; then
   echo "Please run this script as root (e.g., using sudo)."
