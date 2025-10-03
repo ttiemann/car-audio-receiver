@@ -12,6 +12,7 @@ This repository includes an installation script for setting up Wi-Fi and install
   - **Country code:** DE (Germany)
 - Installs Shairport Sync (AirPlay audio receiver)
 - Installs Bluetooth audio packages (BlueALSA, PulseAudio Bluetooth module, Bluetooth utilities, Blueman)
+- Enables HiFiBerry DAC+ Zero for high-quality audio output
 
 ### Usage
 1. Flash Raspberry Pi OS Lite to your SD card.
@@ -27,7 +28,7 @@ This repository includes an installation script for setting up Wi-Fi and install
    ```bash
    sudo ./install.sh
    ```
-8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, and will install Shairport Sync (AirPlay) and Bluetooth audio packages.
+8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, install Shairport Sync (AirPlay) and Bluetooth audio packages, and enable HiFiBerry DAC+ Zero.
 9. Reboot your Raspberry Pi. It will automatically connect to the Wi-Fi network `CarPiAudio` and be ready to receive AirPlay and Bluetooth audio.
 10. Default SSH credentials for Raspberry Pi OS Lite:
     - **Username:** pi

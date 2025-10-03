@@ -32,3 +32,14 @@ apt update && apt upgrade -y
 apt install -y bluealsa bluetooth blueman pulseaudio-module-bluetooth shairport-sync
 
 echo "Audio packages installation complete."
+
+# Enable HiFiBerry DAC+ Zero
+echo "Enabling HiFiBerry DAC+ Zero..."
+CONFIG_TXT="$BOOT_MOUNT/config.txt"
+if ! grep -q '^dtoverlay=hifiberry-dac' "$CONFIG_TXT"; then
+    echo 'dtoverlay=hifiberry-dac' >> "$CONFIG_TXT"
+    echo "HiFiBerry DAC+ Zero overlay added to config.txt."
+else
+    echo "HiFiBerry DAC+ Zero overlay already present in config.txt."
+fi
+echo "HiFiBerry DAC+ Zero enabled."
