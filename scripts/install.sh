@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Ensure the script is run as root
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run this script as root (e.g., using sudo)."
+  exit 1
+fi
+
 # Always enable Wi-Fi with fixed credentials
 BOOT_MOUNT="/boot"
 
@@ -22,7 +28,7 @@ echo "Wi-Fi configuration written to $WPA_CONF with SSID 'CarPiAudio'."
 
 # Install Shairport Sync (AirPlay) and Bluetooth audio packages
 echo "Updating system and installing audio packages..."
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y bluealsa bluetooth blueman pulseaudio-module-bluetooth shairport-sync
+apt update && apt upgrade -y
+apt install -y bluealsa bluetooth blueman pulseaudio-module-bluetooth shairport-sync
 
 echo "Audio packages installation complete."
