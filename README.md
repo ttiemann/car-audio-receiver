@@ -15,6 +15,7 @@ This repository includes an installation script for setting up Wi-Fi and install
 - Configures Bluetooth auto-pairing with device name "CarPiAudio" for easy identification
 - Enables automatic startup of Bluetooth and BlueALSA services
 - Enables HiFiBerry DAC+ Zero for high-quality audio output
+- Configures ALSA to route all audio through HiFiBerry DAC+ Zero
 - Automatically reboots after installation to apply configuration changes
 
 ### Usage
@@ -31,7 +32,7 @@ This repository includes an installation script for setting up Wi-Fi and install
    ```bash
    sudo ./install.sh
    ```
-8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, install Shairport Sync (AirPlay) and Bluetooth audio packages, configure Bluetooth auto-pairing with the device name "CarPiAudio", enable automatic service startup, enable HiFiBerry DAC+ Zero, and automatically reboot to apply all changes.
+8. The script will create a `wpa_supplicant.conf` file in the SD card's boot partition, which configures the Raspberry Pi to automatically connect to the specified Wi-Fi network on first boot, install Shairport Sync (AirPlay) and Bluetooth audio packages, configure Bluetooth auto-pairing with the device name "CarPiAudio", enable automatic service startup, enable HiFiBerry DAC+ Zero with proper ALSA audio routing, and automatically reboot to apply all changes.
 9. After the automatic reboot, your Raspberry Pi will be ready to receive AirPlay and Bluetooth audio.
 10. The device will be discoverable as "CarPiAudio" for Bluetooth pairing from your phone or other devices.
 11. Default SSH credentials for Raspberry Pi OS Lite:

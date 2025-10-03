@@ -66,6 +66,20 @@ if ! grep -q '^dtoverlay=hifiberry-dac' "$CONFIG_TXT"; then
 else
     echo "HiFiBerry DAC+ Zero overlay already present in config.txt."
 fi
+
+# Configure ALSA to use HiFiBerry DAC+ Zero as default
+echo "Configuring ALSA for HiFiBerry DAC+ Zero..."
+cat <<EOF > /etc/asound.conf
+pcm.!default {
+    type hw
+    card 0
+}
+ctl.!default {
+    type hw
+    card 0
+}
+EOF
+echo "ALSA configuration created at /etc/asound.conf."
 echo "HiFiBerry DAC+ Zero enabled."
 
 echo "Installation complete! Rebooting in 5 seconds..."
