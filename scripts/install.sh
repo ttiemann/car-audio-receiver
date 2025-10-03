@@ -37,6 +37,23 @@ apt install -y bluealsa bluetooth blueman pulseaudio-module-bluetooth shairport-
 
 echo "Audio packages installation complete."
 
+# Configure Bluetooth for auto-pairing
+echo "Configuring Bluetooth for auto-pairing..."
+systemctl enable bluetooth
+systemctl start bluetooth
+
+# Make the device discoverable and pairable
+bluetoothctl << EOF
+power on
+discoverable on
+pairable on
+agent on
+default-agent
+EOF
+
+echo "Bluetooth configured for auto-pairing. Device is now discoverable as 'CarPiAudio'."
+echo "To pair your phone, go to Bluetooth settings and look for 'CarPiAudio'."
+
 # Enable HiFiBerry DAC+ Zero
 echo "Enabling HiFiBerry DAC+ Zero..."
 CONFIG_TXT="$BOOT_MOUNT/config.txt"
