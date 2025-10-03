@@ -45,13 +45,14 @@ systemctl start bluetooth
 # Make the device discoverable and pairable
 bluetoothctl << EOF
 power on
+system-alias CarPiAudio
 discoverable on
 pairable on
 agent on
 default-agent
 EOF
 
-echo "Bluetooth configured for auto-pairing. Device is now discoverable as 'CarPiAudio'."
+echo "Bluetooth configured for auto-pairing. Device name set to 'CarPiAudio' and is now discoverable."
 echo "To pair your phone, go to Bluetooth settings and look for 'CarPiAudio'."
 
 # Enable HiFiBerry DAC+ Zero
