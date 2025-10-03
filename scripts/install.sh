@@ -24,4 +24,8 @@ echo "Wi-Fi configuration written to $WPA_CONF with SSID 'CarPiAudio'."
 echo "Updating system and installing Shairport Sync (AirPlay)..."
 sudo apt update && sudo apt upgrade -y
 sudo apt install shairport-sync -y
-echo "Shairport Sync installation complete."
+
+echo "Installing Bluetooth audio packages..."
+sudo apt install bluealsa pulseaudio-module-bluetooth -y
+sudo apt install bluetooth blueman -y
+echo "Bluetooth audio packages installation complete."
