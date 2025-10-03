@@ -37,7 +37,7 @@ if ! apt update && apt upgrade -y; then
   exit 1
 fi
 
-apt install -y bluealsa bluetooth blueman pulseaudio-module-bluetooth shairport-sync
+apt install -y bluetooth blueman pulseaudio pulseaudio-module-bluetooth shairport-sync
 
 echo "Audio packages installation complete."
 
@@ -55,12 +55,9 @@ alsa = {
 EOF
 echo "Shairport Sync configured with service name 'CarPiAudio'."
 
-# Configure Bluetooth for auto-pairing
 echo "=== Configuring Bluetooth for auto-pairing ==="
 systemctl enable bluetooth
 systemctl start bluetooth
-systemctl enable bluealsa
-systemctl start bluealsa
 
 # Make the device discoverable and pairable
 bluetoothctl << EOF
@@ -71,6 +68,12 @@ pairable on
 agent on
 default-agent
 EOF
+
+# Enable PulseAudio Bluetooth module
+echo "Loading PulseAudio Bluetooth module..."
+if ! pactl list modules short | grep -q module-bluetooth-discover; then
+    pactl load-module module-bluetooth-discover
+fi
 
 echo "Bluetooth configured for auto-pairing. Device name set to 'CarPiAudio' and is now discoverable."
 echo "To pair your phone, go to Bluetooth settings and look for 'CarPiAudio'."
