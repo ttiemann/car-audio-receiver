@@ -100,6 +100,11 @@ EOF
 echo "ALSA configuration created at /etc/asound.conf."
 echo "HiFiBerry DAC+ Zero enabled."
 
+# Enable Shairport Sync service
+echo "=== Enabling services ==="
+systemctl enable shairport-sync
+systemctl start shairport-sync
+
 echo "=== Setup complete ==="
 echo "Installation complete! Rebooting in 5 seconds..."
 echo "After reboot, connect via Bluetooth or AirPlay to 'CarPiAudio'."
