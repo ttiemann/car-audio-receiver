@@ -27,6 +27,9 @@ This repository includes an installation script for setting up Wi-Fi on Raspberr
    ```
 8. The script will create a `wpa_supplicant.conf` file in the boot partition with the Wi-Fi credentials.
 9. Reboot your Raspberry Pi. It will automatically connect to the Wi-Fi network `CarPiAudio`.
+10. Default SSH credentials for Raspberry Pi OS Lite:
+    - **Username:** pi
+    - **Password:** raspberry
 
 ### Notes
 - SSH is not enabled by this script. To enable SSH, use the Raspberry Pi Imager tool and enable SSH in the advanced settings before writing the image to the SD card.
