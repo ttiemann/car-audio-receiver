@@ -37,6 +37,20 @@ apt install -y bluealsa bluetooth blueman pulseaudio-module-bluetooth shairport-
 
 echo "Audio packages installation complete."
 
+# Configure Shairport Sync (AirPlay service name)
+echo "Configuring Shairport Sync..."
+cat <<EOF > /etc/shairport-sync.conf
+general = {
+    name = "CarPiAudio";
+    output_backend = "alsa";
+};
+
+alsa = {
+    output_device = "hw:0";
+};
+EOF
+echo "Shairport Sync configured with service name 'CarPiAudio'."
+
 # Configure Bluetooth for auto-pairing
 echo "Configuring Bluetooth for auto-pairing..."
 systemctl enable bluetooth
