@@ -67,3 +67,8 @@ else
     echo "HiFiBerry DAC+ Zero overlay already present in config.txt."
 fi
 echo "HiFiBerry DAC+ Zero enabled."
+
+echo "Installation complete! Rebooting in 5 seconds..."
+echo "After reboot, the device will be ready for AirPlay and Bluetooth audio."
+sleep 5
+reboot
