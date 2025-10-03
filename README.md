@@ -10,6 +10,7 @@ This repository includes an installation script for setting up Wi-Fi on Raspberr
   - **SSID:** CarPiAudio
   - **Password:** carpi1234
   - **Country code:** DE (Germany)
+- Installs Shairport Sync (AirPlay audio receiver)
 
 ### Usage
 1. Flash Raspberry Pi OS Lite to your SD card.
@@ -25,8 +26,8 @@ This repository includes an installation script for setting up Wi-Fi on Raspberr
    ```bash
    ./install.sh
    ```
-8. The script will create a `wpa_supplicant.conf` file in the boot partition with the Wi-Fi credentials.
-9. Reboot your Raspberry Pi. It will automatically connect to the Wi-Fi network `CarPiAudio`.
+8. The script will create a `wpa_supplicant.conf` file in the boot partition with the Wi-Fi credentials and install Shairport Sync (AirPlay).
+9. Reboot your Raspberry Pi. It will automatically connect to the Wi-Fi network `CarPiAudio` and be ready to receive AirPlay audio.
 10. Default SSH credentials for Raspberry Pi OS Lite:
     - **Username:** pi
     - **Password:** raspberry
